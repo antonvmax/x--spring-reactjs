@@ -6,7 +6,7 @@ import R_Pg from './R_Pg.js';
  }
  */
 
-export default function mainReducer(state = {}, action) {
+export default function rootReducer(state = {}, action) {
     return {
         pg: R_Pg(state.pg, action),
     }

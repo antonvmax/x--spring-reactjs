@@ -1,7 +1,7 @@
 import {
     PG_HOMEPAGE,
     PG_OTHERPAGE,
-} from '../actions/A_Pg'
+} from '../actions/A_Pg';
 
 const initialState = {
     curPage: PG_HOMEPAGE,
