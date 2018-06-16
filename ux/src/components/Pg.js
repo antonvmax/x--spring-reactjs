@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 
 import { pg_HomePage, pg_OtherPage } from '../actions/A_Pg'
 
+import HomePage from './Pg_HomePage';
+import OtherPage from './Pg_OtherPage';
+
 // import { SomeFunction } from '../actions/A_Pg';
 
 import {
     PG_HOMEPAGE,
     PG_OTHERPAGE,
-} from '../actions/A_Pg'
+} from '../actions/A_Pg';
 
 // Container Component
 class Pg extends React.Component {
@@ -40,21 +43,9 @@ class PgV extends React.Component {
         // console.log('PgV : props:'); console.log(this.props);
         switch (this.props.curPage) {
             case PG_HOMEPAGE:
-                return (
-                    <div>
-                        Home
-                        <br/><br/>
-                        <button type="button" onClick={this.props.tgl_OtherPage}>go Other</button>
-                    </div>
-                );
+                return (<HomePage/>);
             case PG_OTHERPAGE:
-                return (
-                    <div>
-                        Other
-                        <br/><br/>
-                        <button type="button" onClick={this.props.tgl_HomePage}>go Home</button>
-                    </div>
-                );
+                return (<OtherPage/>);
             default:
                 return (<div>That should not be</div>);
         }
