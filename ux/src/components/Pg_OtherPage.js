@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 
 import { pg_HomePage } from '../actions/A_Pg';
 
+import Entry from '../components/OtherPage/Entry';
+
 class OtherPage extends React.Component {
     render() {
         // console.log('OtherPage: props'); console.log(this.props);
-        return (<OtherPageV
-            otherPageSomeList={this.props.otherPageSomeList.otherPageSomeList}
-            tgl_HomePage={this.props.tgl_HomePage}
+        return (<OtherPageV otherPageSomeList={this.props.otherPageSomeList.otherPageSomeList}
+                            tgl_HomePage={this.props.tgl_HomePage}
         />);
     }
 }
@@ -23,7 +24,7 @@ class OtherPageV extends React.Component {
                 <button type="button" onClick={this.props.tgl_HomePage}>go Home</button>
                 <br/><br/>
                 {this.props.otherPageSomeList.map((entry, index) => (
-                    <div key={index}>list element idx:{index} id:{entry.id} text:{entry.text}</div>
+                    <Entry key={index} {...entry} />
                 ))}
             </div>
         );
