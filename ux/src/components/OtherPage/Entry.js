@@ -1,5 +1,6 @@
 ﻿import React from 'react'
 import { connect } from 'react-redux';
+import { pg_ParametrizedPage } from "../../actions/A_Pg";
 
 class Entry extends React.Component {
     render() {
@@ -7,6 +8,7 @@ class Entry extends React.Component {
         return (<EntryV id={this.props.id}
                         text={this.props.text}
                         isFlag={this.props.isFlag}
+                        tgl_ParametrizedPage={this.props.tgl_ParametrizedPage}
         />);
     }
 }
@@ -19,7 +21,8 @@ class EntryV extends React.Component {
         let isFlag = this.props.isFlag;
         return (
             <div>
-                entry id:{id}, text:{text}, flag:{isFlag}
+                entry id:{id}, text:{text}, flag:{isFlag} &nbsp;
+                <button type="button" onClick={() => this.props.tgl_ParametrizedPage(id)}>go Parametrized {id}</button>
             </div>
         );
     }
@@ -33,7 +36,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        //
+        tgl_ParametrizedPage: (paramId) => {
+            console.log('Entry :: tgl_ParametrizedPage(' + paramId + ')');
+            dispatch(pg_ParametrizedPage(paramId));
+        },
     };
 };
 

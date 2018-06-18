@@ -5,12 +5,14 @@ import { pg_HomePage, pg_OtherPage } from '../actions/A_Pg'
 
 import HomePage from './Pg_HomePage';
 import OtherPage from './Pg_OtherPage';
+import ParametrizedPage from './Pg_ParametrizedPage';
 
 // import { SomeFunction } from '../actions/A_Pg';
 
 import {
     PG_HOMEPAGE,
     PG_OTHERPAGE,
+    PG_PARAMETRIZEDPAGE,
 } from '../actions/A_Pg';
 
 // Container Component
@@ -46,6 +48,8 @@ class PgV extends React.Component {
                 return (<HomePage/>);
             case PG_OTHERPAGE:
                 return (<OtherPage/>);
+            case PG_PARAMETRIZEDPAGE:
+                return (<ParametrizedPage/>);
             default:
                 return (<div>That should not be</div>);
         }
