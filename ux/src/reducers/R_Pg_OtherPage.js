@@ -1,4 +1,9 @@
 
+import {
+    OTHERPAGE_SOMELIST_DATA,
+    OTHERPAGE_SOMELIST_FAILED,
+} from '../actions/A_Pg_OtherPage'
+
 const initialState = {
     otherPageSomeList: [
         {id: 1, text: "sometext1", isFlag: 0},
@@ -9,6 +14,14 @@ const initialState = {
 
 const R_Pg_OtherPage = (state = initialState, action) => {
     switch (action.type) {
+
+        case OTHERPAGE_SOMELIST_FAILED:
+            console.log('R_Pg_OtherPage : OTHERPAGE_SOMELIST_FAILED!');
+            return state;
+
+        case OTHERPAGE_SOMELIST_DATA:
+            console.log('R_Pg_OtherPage : OTHERPAGE_SOMELIST_DATA!');
+            return {...state, ...{otherPageSomeList: action.data.otherPageSomeList}};
 
         default:
             // console.log('R_Pg_OtherPage : default');

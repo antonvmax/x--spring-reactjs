@@ -2,10 +2,25 @@
 import { connect } from 'react-redux';
 
 import { pg_HomePage } from '../actions/A_Pg';
+import { query_OtherPage_SomeList } from '../actions/A_Pg_OtherPage';
 
 import Entry from '../components/OtherPage/Entry';
 
 class OtherPage extends React.Component {
+    componentDidMount() {
+        console.log('OtherPage :: componentDidMount');
+        this.timerID = setInterval(() => this.tick(), 2000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        console.log('OtherPage :: tick');
+        this.props.refreshSomeList();
+    }
+
     render() {
         // console.log('OtherPage: props'); console.log(this.props);
         return (<OtherPageV otherPageSomeList={this.props.otherPageSomeList.otherPageSomeList}
@@ -40,6 +55,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        refreshSomeList: () => {
+            console.log('OtherPage :: refreshSomeList()');
+            dispatch(query_OtherPage_SomeList());
+        },
         tgl_HomePage: () => {
             console.log('OtherPage :: tgl_HomePage()');
             dispatch(pg_HomePage());
