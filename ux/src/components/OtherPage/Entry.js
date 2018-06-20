@@ -19,10 +19,11 @@ class EntryV extends React.Component {
         let id = this.props.id;
         let text = this.props.text;
         let isFlag = this.props.isFlag;
+        let isDisabled = (this.props.isFlag !== 1) ? 'disabled' : '';
         return (
             <div>
                 entry id:{id}, text:{text}, flag:{isFlag} &nbsp;
-                <button type="button" onClick={() => this.props.tgl_ParametrizedPage(id)}>go Parametrized {id}</button>
+                <button type="button" onClick={() => this.props.tgl_ParametrizedPage(id)} disabled={isDisabled}>go Parametrized {id}</button>
             </div>
         );
     }
