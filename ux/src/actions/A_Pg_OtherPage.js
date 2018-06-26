@@ -34,13 +34,11 @@ export const query_OtherPage_SomeList = () => dispatch => {
         .then(response => {
             // supply fictive data responce on successful query
             if (process.env.NODE_ENV === 'development') {
-                let dH = {
-                    otherPageSomeList: [
-                        {id: 11, text: "sometext11", isFlag: 1},
-                        {id: 12, text: "sometext12", isFlag: 0},
-                        {id: 13, text: "sometext13", isFlag: 1},
-                    ],
-                };
+                let dH = [
+                    { id: 11, text: "sometext11", isFlag: 1 },
+                    { id: 12, text: "sometext12", isFlag: 0 },
+                    { id: 13, text: "sometext13", isFlag: 1 },
+                ];
                 response = { data: dH };
             }                                               // console.log('OtherPage_SomeList_URL() : response data:'); console.log(response.data);
             dispatch(otherPage_SomeList_Data(response));

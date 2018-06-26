@@ -1,4 +1,3 @@
-
 import {
     OTHERPAGE_SOMELIST_DATA,
     OTHERPAGE_SOMELIST_FAILED,
@@ -21,7 +20,7 @@ const R_Pg_OtherPage = (state = initialState, action) => {
 
         case OTHERPAGE_SOMELIST_DATA:
             console.log('R_Pg_OtherPage : OTHERPAGE_SOMELIST_DATA!');
-            return {...state, ...{otherPageSomeList: action.data.otherPageSomeList}};
+            return {...state, ...{otherPageSomeList: action.data}};
 
         default:
             // console.log('R_Pg_OtherPage : default');
