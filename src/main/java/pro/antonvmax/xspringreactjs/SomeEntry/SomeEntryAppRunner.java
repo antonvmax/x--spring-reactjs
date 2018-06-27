@@ -47,6 +47,24 @@ public class SomeEntryAppRunner implements CommandLineRunner {
 
         log.info("");
 
+        // fetch entry with "some"
+        log.info("SomeEntries found with findOneByText(some):");
+        log.info("-------------------------------------------");
+//        Optional<SomeEntry> someEntry0 = someEntryRepository.findOneByText("some");
+//        log.info(someEntry0.toString());
+        someEntryRepository.findOneByText("some")
+                .ifPresent(someEntry -> log.info(someEntry.toString()));
+        log.info("");
+
+        // fetch entry with "sometext111"
+        log.info("SomeEntries found with findOneByText(sometext111):");
+        log.info("--------------------------------------------------");
+        someEntryRepository.findOneByText("sometext111")
+                .ifPresent(someEntry -> {
+                    log.info(someEntry.toString());
+                    log.info("");
+                });
+
         log.info("SomeEntryAppRunner:: done.");
     }
 }

@@ -8,6 +8,7 @@ import pro.antonvmax.xspringreactjs.SomeEntry.SomeEntry;
 import pro.antonvmax.xspringreactjs.SomeEntry.SomeEntryRepository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ux/")
@@ -32,5 +33,12 @@ public class UxController {
         return this.someEntryRepository.findAllByTextContains(text);
     }
     // try at http://127.0.0.1:8080/ux/otherpage_somelist_filtered/other
+
+    @RequestMapping(value = "/somelist_entry/{text}", method = RequestMethod.GET)
+    public Optional<SomeEntry> getUx_SomeList_Entry(@PathVariable String text) {
+        return this.someEntryRepository.findOneByText(text);
+    }
+    // try at http://127.0.0.1:8080/ux/somelist_entry/some         --> null
+    // try at http://127.0.0.1:8080/ux/somelist_entry/sometext111  --> 2 elements
 
 }
