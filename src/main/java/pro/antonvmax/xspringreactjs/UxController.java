@@ -27,4 +27,10 @@ public class UxController {
         return this.someEntryRepository.findAll();
     }
 
+    @RequestMapping(value = "/otherpage_somelist_filtered/{text}", method = RequestMethod.GET)
+    Collection<SomeEntry> getUx_OtherPage_SomeList_Filtered(@PathVariable String text) {
+        return this.someEntryRepository.findAllByTextContains(text);
+    }
+    // try at http://127.0.0.1:8080/ux/otherpage_somelist_filtered/other
+
 }

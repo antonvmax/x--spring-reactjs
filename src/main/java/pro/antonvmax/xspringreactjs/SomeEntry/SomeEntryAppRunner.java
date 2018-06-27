@@ -22,6 +22,7 @@ public class SomeEntryAppRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("SomeEntryAppRunner::run()");
+        log.info("");
 
         // save a couple of entries
         someEntryRepository.save(new SomeEntry("sometext111", 1));
@@ -30,10 +31,22 @@ public class SomeEntryAppRunner implements CommandLineRunner {
 
         // fetch all
         log.info("SomeEntries found with findAll():");
-        log.info("-------------------------------");
+        log.info("---------------------------------");
         for (SomeEntry someEntry : someEntryRepository.findAll()) {
             log.info(someEntry.toString());
         }
         log.info("");
+
+        // fetch entries contains "some"
+        log.info("SomeEntries found with findAllByTextContains(other):");
+        log.info("----------------------------------------------------");
+        someEntryRepository.findAllByTextContains("other")
+                .forEach(someEntry -> {
+                    log.info(someEntry.toString());
+                });
+
+        log.info("");
+
+        log.info("SomeEntryAppRunner:: done.");
     }
 }
