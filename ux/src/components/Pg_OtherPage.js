@@ -9,15 +9,19 @@ import Entry from '../components/OtherPage/Entry';
 class OtherPage extends React.Component {
     componentDidMount() {
         console.log('OtherPage :: componentDidMount');
-        this.timerID = setInterval(() => this.tick(), 2000);
+        this.timerID = setTimeout(() => this.tick(), 2000);
     }
 
     componentWillUnmount() {
-        clearInterval(this.timerID);
+        if (this.timerID) {
+            clearTimeout(this.timerID);
+            this.timerID = null;
+        }
     }
 
     tick() {
         console.log('OtherPage :: tick');
+        clearTimeout(this.timerID);
         this.props.refreshSomeList();
     }
 
