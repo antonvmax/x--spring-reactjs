@@ -2,7 +2,10 @@
 import { connect } from 'react-redux';
 
 import { pg_HomePage } from '../actions/A_Pg';
-import { query_OtherPage_SomeList } from '../actions/A_Pg_OtherPage';
+import {
+    query_OtherPage_SomeList,
+    query_OtherPage_SomeList_Filtered,
+} from '../actions/A_Pg_OtherPage';
 
 import Entry from '../components/OtherPage/Entry';
 
@@ -29,6 +32,7 @@ class OtherPage extends React.Component {
         // console.log('OtherPage: props'); console.log(this.props);
         return (<OtherPageV otherPageSomeList={this.props.otherPageSomeList.otherPageSomeList}
                             tgl_HomePage={this.props.tgl_HomePage}
+                            qry_SomeList_Filtered={this.props.qry_SomeList_Filtered}
         />);
     }
 }
@@ -41,6 +45,8 @@ class OtherPageV extends React.Component {
                 Other
                 <br/><br/>
                 <button type="button" onClick={this.props.tgl_HomePage}>go Home</button>
+                <br/><br/>
+                <button type="button" onClick={() => this.props.qry_SomeList_Filtered('other')}>get list filtered by 'other'</button>
                 <br/><br/>
                 {this.props.otherPageSomeList.map((entry, index) => (
                     <Entry key={index} {...entry} />
@@ -62,6 +68,10 @@ const mapDispatchToProps = (dispatch) => {
         refreshSomeList: () => {
             console.log('OtherPage :: refreshSomeList()');
             dispatch(query_OtherPage_SomeList());
+        },
+        qry_SomeList_Filtered: (filter) => {
+            console.log('OtherPage :: qry_SomeList_Filtered(' + filter + ')');
+            dispatch(query_OtherPage_SomeList_Filtered(filter));
         },
         tgl_HomePage: () => {
             console.log('OtherPage :: tgl_HomePage()');
